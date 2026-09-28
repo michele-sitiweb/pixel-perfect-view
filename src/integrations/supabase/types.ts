@@ -14,16 +14,180 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      contact_requests: {
+        Row: {
+          azienda: string | null
+          consenso_privacy: boolean
+          created_at: string
+          email: string
+          id: string
+          messaggio: string | null
+          nome: string
+          origine: string
+          servizio: string | null
+          telefono: string | null
+        }
+        Insert: {
+          azienda?: string | null
+          consenso_privacy?: boolean
+          created_at?: string
+          email: string
+          id?: string
+          messaggio?: string | null
+          nome: string
+          origine?: string
+          servizio?: string | null
+          telefono?: string | null
+        }
+        Update: {
+          azienda?: string | null
+          consenso_privacy?: boolean
+          created_at?: string
+          email?: string
+          id?: string
+          messaggio?: string | null
+          nome?: string
+          origine?: string
+          servizio?: string | null
+          telefono?: string | null
+        }
+        Relationships: []
+      }
+      pages: {
+        Row: {
+          content_html: string
+          created_at: string
+          excerpt: string | null
+          featured_image: string | null
+          id: string
+          path: string
+          published_at: string | null
+          seo_description: string | null
+          seo_title: string | null
+          slug: string
+          title: string
+          updated_at: string
+          wp_id: number | null
+        }
+        Insert: {
+          content_html?: string
+          created_at?: string
+          excerpt?: string | null
+          featured_image?: string | null
+          id?: string
+          path: string
+          published_at?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
+          slug: string
+          title: string
+          updated_at?: string
+          wp_id?: number | null
+        }
+        Update: {
+          content_html?: string
+          created_at?: string
+          excerpt?: string | null
+          featured_image?: string | null
+          id?: string
+          path?: string
+          published_at?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
+          slug?: string
+          title?: string
+          updated_at?: string
+          wp_id?: number | null
+        }
+        Relationships: []
+      }
+      posts: {
+        Row: {
+          content_html: string
+          created_at: string
+          excerpt: string | null
+          featured_image: string | null
+          id: string
+          path: string
+          published_at: string
+          seo_description: string | null
+          seo_title: string | null
+          slug: string
+          status: string
+          title: string
+          updated_at: string
+          wp_id: number | null
+        }
+        Insert: {
+          content_html?: string
+          created_at?: string
+          excerpt?: string | null
+          featured_image?: string | null
+          id?: string
+          path: string
+          published_at?: string
+          seo_description?: string | null
+          seo_title?: string | null
+          slug: string
+          status?: string
+          title: string
+          updated_at?: string
+          wp_id?: number | null
+        }
+        Update: {
+          content_html?: string
+          created_at?: string
+          excerpt?: string | null
+          featured_image?: string | null
+          id?: string
+          path?: string
+          published_at?: string
+          seo_description?: string | null
+          seo_title?: string | null
+          slug?: string
+          status?: string
+          title?: string
+          updated_at?: string
+          wp_id?: number | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "editor"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +314,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "editor"],
+    },
   },
 } as const
