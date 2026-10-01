@@ -1,24 +1,288 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  ArrowRight,
+  Bot,
+  Building2,
+  FileCheck2,
+  Gavel,
+  MessageCircle,
+  Receipt,
+  Scale,
+  ShieldCheck,
+  Sparkles,
+  Users,
+  Workflow,
+} from "lucide-react";
+import { getPageByPath, listPosts } from "@/lib/content.functions";
+import { buildHead, accountingServiceLd, breadcrumbLd } from "@/lib/seo";
+import { Button } from "@/components/ui/button";
+import { Prose } from "@/components/site/Prose";
+import { PageLink } from "@/components/site/PageLink";
+import { PhotoPlaceholder } from "@/components/site/PhotoPlaceholder";
+import { PostCardItem } from "@/components/site/PostCardItem";
+import { ContactForm } from "@/components/site/ContactForm";
+import { servizi, studio, team } from "@/lib/site";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITOLO = "Studio commercialista a Milano | Studio Parotelli";
+const DESCRIZIONE =
+  "Studio di dottori commercialisti, avvocati e consulenti del lavoro a Milano: contabilità, fiscale, societario, lavoro e consulenza legale per partite IVA, startup e PMI.";
+
 export const Route = createFileRoute("/")({
-  component: Index,
+  loader: async () => {
+    const [pagina, ultimi] = await Promise.all([
+      getPageByPath({ data: { path: "/" } }),
+      listPosts({ data: { page: 1, perPage: 3 } }),
+    ]);
+    return { pagina, ultimi: ultimi.items };
+  },
+  head: () => buildHead({ title: TITOLO, description: DESCRIZIONE, path: "/" }),
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+const icone = [
+  Receipt,
+  Users,
+  Scale,
+  Building2,
+  Workflow,
+  FileCheck2,
+  ShieldCheck,
+  Receipt,
+  Gavel,
+  Sparkles,
+];
+
+function Home() {
+  const { pagina, ultimi } = Route.useLoaderData();
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(accountingServiceLd) }}
       />
-    </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbLd([{ name: "Home", path: "/" }])),
+        }}
+      />
+
+      {/* Apertura */}
+      <section className="border-b border-border">
+        <div className="container-page grid gap-12 py-16 md:py-24 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center">
+          <div>
+            <p className="eyebrow">Consulenza tributaria, legale e societaria</p>
+            <h1 className="mt-4 font-serif text-4xl leading-[1.08] md:text-6xl">
+              Studio commercialista
+              <span className="block text-muted-foreground">a Milano</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              Seguiamo partite IVA, startup e PMI nell'aprire, gestire, vendere o chiudere una
+              società. Un unico studio per fisco, lavoro, diritto e adempimenti.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button asChild variant="brand" size="lg">
+                <Link to="/contatti/">
+                  Richiedi un preventivo
+                  <ArrowRight className="size-4" aria-hidden />
+                </Link>
+              </Button>
+              <Button asChild variant="line" size="lg">
+                <a href={studio.whatsappHref} target="_blank" rel="noreferrer noopener">
+                  <MessageCircle className="size-4" aria-hidden />
+                  Scrivici su WhatsApp
+                </a>
+              </Button>
+            </div>
+            <dl className="mt-10 grid grid-cols-1 gap-6 border-t border-border pt-8 sm:grid-cols-3">
+              <div>
+                <dt className="eyebrow">Dove</dt>
+                <dd className="mt-1 text-sm">{studio.sedeLegale}</dd>
+              </div>
+              <div>
+                <dt className="eyebrow">Telefono</dt>
+                <dd className="mt-1 text-sm">
+                  <a href={studio.telefonoHref} className="hover:underline">
+                    {studio.telefono}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="eyebrow">Email</dt>
+                <dd className="mt-1 text-sm">
+                  <a href={`mailto:${studio.email}`} className="hover:underline">
+                    {studio.email}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </div>
+          <PhotoPlaceholder label="foto dello studio" className="aspect-[4/5] w-full" />
+        </div>
+      </section>
+
+      {/* Servizi */}
+      <section className="bg-secondary">
+        <div className="container-page py-16 md:py-24">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="eyebrow">Servizi</p>
+              <h2 className="mt-3 max-w-2xl font-serif text-3xl md:text-4xl">
+                Tutto quello che serve a un'impresa, in un unico studio
+              </h2>
+            </div>
+            <Button asChild variant="line">
+              <Link to="/contatti/">Chiedi quale serve a te</Link>
+            </Button>
+          </div>
+
+          <ul className="mt-10 grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+            {servizi.map((s, i) => {
+              const Icona = icone[i % icone.length]!;
+              return (
+                <li key={s.to} className="bg-background">
+                  <PageLink
+                    to={s.to}
+                    className="flex h-full flex-col gap-3 p-6 transition-colors hover:bg-secondary"
+                  >
+                    <Icona className="size-5 text-brand" aria-hidden strokeWidth={1.5} />
+                    <span className="font-serif text-lg">{s.label}</span>
+                    <span className="mt-auto inline-flex items-center gap-1 text-sm text-muted-foreground">
+                      Scopri <ArrowRight className="size-3.5" aria-hidden />
+                    </span>
+                  </PageLink>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+
+      {/* Automazione e AI */}
+      <section className="bg-anthracite text-anthracite-foreground">
+        <div className="container-page grid gap-10 py-16 md:py-24 lg:grid-cols-2 lg:items-center">
+          <div>
+            <p className="eyebrow text-anthracite-foreground/60">Novità</p>
+            <h2 className="mt-3 font-serif text-3xl text-anthracite-foreground md:text-4xl">
+              Automazione e intelligenza artificiale per la tua amministrazione
+            </h2>
+            <p className="mt-5 text-anthracite-foreground/75">
+              Mettiamo ordine nei flussi documentali e riduciamo il lavoro manuale: fatture,
+              scadenze, prima nota e controllo di gestione. Strumenti scelti caso per caso, con
+              regole chiare su dati e riservatezza.
+            </p>
+            <Button asChild variant="brand" size="lg" className="mt-8">
+              <Link to="/automazione-intelligenza-artificiale/">
+                Vedi come lavoriamo
+                <ArrowRight className="size-4" aria-hidden />
+              </Link>
+            </Button>
+          </div>
+          <ul className="grid gap-px bg-anthracite-foreground/15 sm:grid-cols-2">
+            {[
+              { t: "Fatture e documenti", d: "Raccolta e archiviazione automatica, meno scambi di email." },
+              { t: "Scadenze", d: "Promemoria e controlli periodici sugli adempimenti." },
+              { t: "Prima nota", d: "Riconciliazioni assistite sui movimenti bancari." },
+              { t: "Report", d: "Numeri aggiornati su margini, incassi e costi." },
+            ].map((item) => (
+              <li key={item.t} className="bg-anthracite p-6">
+                <Bot className="size-5 text-brand" aria-hidden strokeWidth={1.5} />
+                <p className="mt-3 font-serif text-lg text-anthracite-foreground">{item.t}</p>
+                <p className="mt-2 text-sm text-anthracite-foreground/70">{item.d}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Studio: testo originale del sito */}
+      {pagina?.content_html ? (
+        <section className="container-page py-16 md:py-24">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+            <div>
+              <p className="eyebrow">Lo studio</p>
+              <h2 className="mt-3 font-serif text-3xl md:text-4xl">Chi siamo</h2>
+              <Button asChild variant="line" className="mt-6">
+                <PageLink to="/lo-studio-2/">Conosci lo studio</PageLink>
+              </Button>
+            </div>
+            <Prose html={pagina.content_html} />
+          </div>
+        </section>
+      ) : null}
+
+      {/* Team */}
+      <section className="bg-secondary">
+        <div className="container-page py-16 md:py-24">
+          <p className="eyebrow">Professionisti</p>
+          <h2 className="mt-3 font-serif text-3xl md:text-4xl">Le persone dello studio</h2>
+          <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {team.map((p) => (
+              <li key={p.to} className="border border-border bg-background p-6">
+                <PhotoPlaceholder label="foto del professionista" className="aspect-[4/3]" />
+                <p className="mt-5 font-serif text-lg">{p.nome}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{p.ruolo}</p>
+                <PageLink
+                  to={p.to}
+                  className="mt-4 inline-flex items-center gap-1 text-sm underline underline-offset-4"
+                >
+                  Profilo <ArrowRight className="size-3.5" aria-hidden />
+                </PageLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Ultimi articoli */}
+      {ultimi.length > 0 ? (
+        <section className="container-page py-16 md:py-24">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="eyebrow">News</p>
+              <h2 className="mt-3 font-serif text-3xl md:text-4xl">Ultimi aggiornamenti</h2>
+            </div>
+            <Button asChild variant="line">
+              <Link to="/news/">Tutte le news</Link>
+            </Button>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {ultimi.map((post) => (
+              <PostCardItem key={post.id} post={post} />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
+      {/* Contatti */}
+      <section id="contattaci" className="border-t border-border bg-secondary">
+        <div className="container-page grid gap-12 py-16 md:py-24 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+          <div>
+            <p className="eyebrow">Contatti</p>
+            <h2 className="mt-3 font-serif text-3xl md:text-4xl">Richiedi un preventivo</h2>
+            <p className="mt-4 text-muted-foreground">
+              Scrivici la tua situazione: ti rispondiamo con i passaggi concreti, i tempi e i costi.
+            </p>
+            <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
+              <li>{studio.sedeLegale}</li>
+              <li>{studio.sedeOperativa}</li>
+              <li>
+                <a href={studio.telefonoHref} className="hover:text-foreground">
+                  {studio.telefono}
+                </a>{" "}
+                ·{" "}
+                <a href={studio.whatsappHref} className="hover:text-foreground">
+                  {studio.cellulare}
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="border border-border bg-background p-6 md:p-8">
+            <ContactForm origine="/" />
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
