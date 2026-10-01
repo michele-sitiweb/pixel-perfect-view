@@ -1,5 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
-import { createPublicServerClient } from "./supabase-public";
+import { createPublicServerClient } from "@/server/supabase-public";
 
 const PAGE_FIELDS =
   "id, slug, path, title, content_html, excerpt, featured_image, seo_title, seo_description, published_at, updated_at";
