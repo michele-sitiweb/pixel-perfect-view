@@ -106,9 +106,6 @@ function PaginaImportata() {
         </div>
       </section>
 
-      <div className="sr-only">
-        <PhotoPlaceholder label="foto dello studio" />
-      </div>
     </>
   );
 }
