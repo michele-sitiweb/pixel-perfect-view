@@ -10,6 +10,8 @@ export const getRouter = () => {
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
+    // Tutti gli indirizzi del sito mantengono la barra finale.
+    trailingSlash: "always",
   });
 
   return router;
