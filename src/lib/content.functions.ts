@@ -1,5 +1,4 @@
 import { createServerFn } from "@tanstack/react-start";
-import { createPublicServerClient } from "@/server/supabase-public";
 
 const PAGE_FIELDS =
   "id, slug, path, title, content_html, excerpt, featured_image, seo_title, seo_description, published_at, updated_at";
@@ -40,6 +39,7 @@ function normalizePath(path: string) {
 export const getPageByPath = createServerFn({ method: "GET" })
   .inputValidator((input: { path: string }) => input)
   .handler(async ({ data }): Promise<PageRecord | null> => {
+    const { createPublicServerClient } = await import("@/server/supabase-public");
     const supabase = createPublicServerClient();
     const { data: row } = await supabase
       .from("pages")
@@ -52,6 +52,7 @@ export const getPageByPath = createServerFn({ method: "GET" })
 export const getPostByPath = createServerFn({ method: "GET" })
   .inputValidator((input: { path: string }) => input)
   .handler(async ({ data }): Promise<PageRecord | null> => {
+    const { createPublicServerClient } = await import("@/server/supabase-public");
     const supabase = createPublicServerClient();
     const { data: row } = await supabase
       .from("posts")
@@ -68,6 +69,7 @@ export const listPosts = createServerFn({ method: "GET" })
     const perPage = data.perPage ?? 9;
     const page = Math.max(1, data.page ?? 1);
     const from = (page - 1) * perPage;
+    const { createPublicServerClient } = await import("@/server/supabase-public");
     const supabase = createPublicServerClient();
     let query = supabase
       .from("posts")
@@ -84,6 +86,7 @@ export const listPosts = createServerFn({ method: "GET" })
 export const getRelatedPosts = createServerFn({ method: "GET" })
   .inputValidator((input: { excludePath: string; limit?: number }) => input)
   .handler(async ({ data }): Promise<PostCard[]> => {
+    const { createPublicServerClient } = await import("@/server/supabase-public");
     const supabase = createPublicServerClient();
     const { data: rows } = await supabase
       .from("posts")
@@ -96,7 +99,8 @@ export const getRelatedPosts = createServerFn({ method: "GET" })
   });
 
 export const listAllPaths = createServerFn({ method: "GET" }).handler(async () => {
-  const supabase = createPublicServerClient();
+  const { createPublicServerClient } = await import("@/server/supabase-public");
+    const supabase = createPublicServerClient();
   const [pages, posts] = await Promise.all([
     supabase.from("pages").select("path, updated_at"),
     supabase.from("posts").select("path, updated_at").eq("status", "publish"),
