@@ -11,6 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
+import { Route as AutomazioneIntelligenzaArtificialeRouteImport } from './routes/automazione-intelligenza-artificiale'
+import { Route as ContattiRouteImport } from './routes/contatti'
+import { Route as GraziePerAverciContattatoRouteImport } from './routes/grazie-per-averci-contattato'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as YearMonthDaySlugRouteImport } from './routes/$year.$month.$day.$slug'
 
@@ -24,6 +27,23 @@ const SplatRoute = SplatRouteImport.update({
   path: '/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AutomazioneIntelligenzaArtificialeRoute =
+  AutomazioneIntelligenzaArtificialeRouteImport.update({
+    id: '/automazione-intelligenza-artificiale',
+    path: '/automazione-intelligenza-artificiale',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ContattiRoute = ContattiRouteImport.update({
+  id: '/contatti',
+  path: '/contatti',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GraziePerAverciContattatoRoute =
+  GraziePerAverciContattatoRouteImport.update({
+    id: '/grazie-per-averci-contattato',
+    path: '/grazie-per-averci-contattato',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
@@ -38,12 +58,18 @@ const YearMonthDaySlugRoute = YearMonthDaySlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/automazione-intelligenza-artificiale': typeof AutomazioneIntelligenzaArtificialeRoute
+  '/contatti': typeof ContattiRoute
+  '/grazie-per-averci-contattato': typeof GraziePerAverciContattatoRoute
   '/news': typeof NewsRoute
   '/$year/$month/$day/$slug': typeof YearMonthDaySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/automazione-intelligenza-artificiale': typeof AutomazioneIntelligenzaArtificialeRoute
+  '/contatti': typeof ContattiRoute
+  '/grazie-per-averci-contattato': typeof GraziePerAverciContattatoRoute
   '/news': typeof NewsRoute
   '/$year/$month/$day/$slug': typeof YearMonthDaySlugRoute
 }
@@ -51,20 +77,48 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
+  '/automazione-intelligenza-artificiale': typeof AutomazioneIntelligenzaArtificialeRoute
+  '/contatti': typeof ContattiRoute
+  '/grazie-per-averci-contattato': typeof GraziePerAverciContattatoRoute
   '/news': typeof NewsRoute
   '/$year/$month/$day/$slug': typeof YearMonthDaySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$' | '/news' | '/$year/$month/$day/$slug'
+  fullPaths:
+    | '/'
+    | '/$'
+    | '/automazione-intelligenza-artificiale'
+    | '/contatti'
+    | '/grazie-per-averci-contattato'
+    | '/news'
+    | '/$year/$month/$day/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$' | '/news' | '/$year/$month/$day/$slug'
-  id: '__root__' | '/' | '/$' | '/news' | '/$year/$month/$day/$slug'
+  to:
+    | '/'
+    | '/$'
+    | '/automazione-intelligenza-artificiale'
+    | '/contatti'
+    | '/grazie-per-averci-contattato'
+    | '/news'
+    | '/$year/$month/$day/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/$'
+    | '/automazione-intelligenza-artificiale'
+    | '/contatti'
+    | '/grazie-per-averci-contattato'
+    | '/news'
+    | '/$year/$month/$day/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
+  AutomazioneIntelligenzaArtificialeRoute: typeof AutomazioneIntelligenzaArtificialeRoute
+  ContattiRoute: typeof ContattiRoute
+  GraziePerAverciContattatoRoute: typeof GraziePerAverciContattatoRoute
   NewsRoute: typeof NewsRoute
   YearMonthDaySlugRoute: typeof YearMonthDaySlugRoute
 }
@@ -83,6 +137,27 @@ declare module '@tanstack/react-router' {
       path: '/$'
       fullPath: '/$'
       preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/automazione-intelligenza-artificiale': {
+      id: '/automazione-intelligenza-artificiale'
+      path: '/automazione-intelligenza-artificiale'
+      fullPath: '/automazione-intelligenza-artificiale'
+      preLoaderRoute: typeof AutomazioneIntelligenzaArtificialeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contatti': {
+      id: '/contatti'
+      path: '/contatti'
+      fullPath: '/contatti'
+      preLoaderRoute: typeof ContattiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/grazie-per-averci-contattato': {
+      id: '/grazie-per-averci-contattato'
+      path: '/grazie-per-averci-contattato'
+      fullPath: '/grazie-per-averci-contattato'
+      preLoaderRoute: typeof GraziePerAverciContattatoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news': {
@@ -105,6 +180,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
+  AutomazioneIntelligenzaArtificialeRoute:
+    AutomazioneIntelligenzaArtificialeRoute,
+  ContattiRoute: ContattiRoute,
+  GraziePerAverciContattatoRoute: GraziePerAverciContattatoRoute,
   NewsRoute: NewsRoute,
   YearMonthDaySlugRoute: YearMonthDaySlugRoute,
 }

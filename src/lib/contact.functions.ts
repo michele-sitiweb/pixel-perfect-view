@@ -42,7 +42,7 @@ export const inviaRichiesta = createServerFn({ method: "POST" })
       azienda: data.azienda || null,
       servizio: data.servizio,
       messaggio: data.messaggio,
-      origine: data.origine ?? null,
+      origine: data.origine ?? "contatti",
       consenso_privacy: true,
     });
     if (error) {

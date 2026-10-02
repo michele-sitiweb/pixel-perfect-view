@@ -18,7 +18,7 @@ export function PageLink({
 }) {
   const splat = to.replace(/^\//, "").replace(/\/$/, "");
   return (
-    <Link to="/$" params={{ _splat: splat }} className={className} onClick={onClick}>
+    <Link to="/$/" params={{ _splat: splat }} className={className} onClick={onClick}>
       {children}
     </Link>
   );
