@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PageLink } from "@/components/site/PageLink";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,8 +7,7 @@ import { servizi, studio } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 const mainNav = [
-  { label: "Chi siamo", to: "/lo-studio-2/" },
-  { label: "Automazione e AI", to: "/automazione-intelligenza-artificiale/" },
+    { label: "Automazione e AI", to: "/automazione-intelligenza-artificiale/" },
   { label: "News", to: "/news/" },
   { label: "Contatti", to: "/contatti/" },
 ];
@@ -49,19 +49,22 @@ export function Header() {
             {serviziOpen ? (
               <div className="absolute left-0 top-full w-[22rem] border border-border bg-card p-2 shadow-raised">
                 {servizi.map((s) => (
-                  <Link
+                  <PageLink
                     key={s.to}
                     to={s.to}
                     onClick={() => setServiziOpen(false)}
                     className="block rounded-sm px-3 py-2 text-sm text-foreground/85 transition-colors hover:bg-secondary hover:text-foreground"
                   >
                     {s.label}
-                  </Link>
+                  </PageLink>
                 ))}
               </div>
             ) : null}
           </div>
 
+          <PageLink to="/lo-studio-2/" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground">
+            Chi siamo
+          </PageLink>
           {mainNav.map((item) => (
             <Link
               key={item.to}
@@ -109,17 +112,20 @@ export function Header() {
               </summary>
               <div className="flex flex-col pb-3">
                 {servizi.map((s) => (
-                  <Link
+                  <PageLink
                     key={s.to}
                     to={s.to}
                     onClick={() => setOpen(false)}
                     className="py-2 pl-3 text-sm text-foreground/80"
                   >
                     {s.label}
-                  </Link>
+                  </PageLink>
                 ))}
               </div>
             </details>
+            <PageLink to="/lo-studio-2/" onClick={() => setOpen(false)} className="border-b border-border py-4 text-base font-medium">
+              Chi siamo
+            </PageLink>
             {mainNav.map((item) => (
               <Link
                 key={item.to}

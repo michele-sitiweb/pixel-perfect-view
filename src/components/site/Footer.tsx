@@ -1,3 +1,4 @@
+import { PageLink } from "@/components/site/PageLink";
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { servizi, studio } from "@/lib/site";
@@ -61,12 +62,12 @@ export function Footer() {
           <p className="eyebrow text-anthracite-foreground/60">Studio</p>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
-              <Link
+              <PageLink
                 to="/lo-studio-2/"
                 className="text-anthracite-foreground/80 transition-colors hover:text-brand"
               >
                 Chi siamo
-              </Link>
+              </PageLink>
             </li>
             <li>
               <Link
@@ -85,20 +86,20 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <Link
+              <PageLink
                 to="/cambiare-commercialista/"
                 className="text-anthracite-foreground/80 transition-colors hover:text-brand"
               >
                 Cambiare commercialista
-              </Link>
+              </PageLink>
             </li>
             <li>
-              <Link
+              <PageLink
                 to="/privacy/"
                 className="text-anthracite-foreground/80 transition-colors hover:text-brand"
               >
                 Privacy e cookie
-              </Link>
+              </PageLink>
             </li>
           </ul>
         </div>

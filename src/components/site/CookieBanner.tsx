@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { PageLink } from "@/components/site/PageLink";
 import { Button } from "@/components/ui/button";
 
 const KEY = "sp-cookie-consent";
@@ -36,9 +36,9 @@ export function CookieBanner() {
             Usiamo cookie tecnici necessari al funzionamento del sito e, solo con il tuo consenso,
             cookie di statistica e di marketing. Puoi accettare, rifiutare o scegliere. Dettagli
             nella{" "}
-            <Link to="/privacy/" className="underline underline-offset-2">
+            <PageLink to="/privacy/" className="underline underline-offset-2">
               pagina privacy
-            </Link>
+            </PageLink>
             .
           </p>
 

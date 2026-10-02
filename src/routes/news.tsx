@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 const PER_PAGINA = 9;
 
-type Ricerca = { page?: number; q?: string };
+type Ricerca = { page?: number | undefined; q?: string | undefined };
 
 export const Route = createFileRoute("/news")({
   validateSearch: (search: Record<string, unknown>): Ricerca => ({
