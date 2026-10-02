@@ -5,7 +5,7 @@ import { studio } from "@/lib/site";
 
 export function ContactAside() {
   return (
-    <aside className="border border-border bg-secondary p-6 lg:sticky lg:top-28">
+    <aside className="border border-border bg-secondary p-6 self-start lg:sticky lg:top-28">
       <p className="eyebrow">Parliamone</p>
       <p className="mt-2 font-serif text-xl">Serve una valutazione sul tuo caso?</p>
       <p className="mt-2 text-sm text-muted-foreground">

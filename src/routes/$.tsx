@@ -57,9 +57,6 @@ function PaginaImportata() {
             <span className="text-foreground">{page.title}</span>
           </nav>
           <h1 className="max-w-3xl font-serif text-3xl leading-tight md:text-5xl">{page.title}</h1>
-          {page.excerpt ? (
-            <p className="mt-5 max-w-2xl text-lg text-muted-foreground">{page.excerpt}</p>
-          ) : null}
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild variant="brand" size="lg">
               <Link to="/contatti/">Richiedi un preventivo</Link>
