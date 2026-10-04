@@ -5,6 +5,8 @@ import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { servizi, studio } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo-mpp.png.asset.json";
+import { HomeDesignSelector } from "@/components/site/HomeDesignProvider";
 
 const mainNav = [
     { label: "Automazione e AI", to: "/automazione-intelligenza-artificiale/" },
@@ -20,24 +22,27 @@ export function Header() {
   const isActive = (to: string) => pathname.replace(/\/?$/, "/") === to;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
-      <div className="container-page flex h-16 items-center justify-between gap-6 md:h-20">
-        <Link to="/" className="flex flex-col leading-none" onClick={() => setOpen(false)}>
-          <span className="font-serif text-lg font-semibold tracking-tight md:text-xl">
+    <header className="sticky top-0 z-50 border-b border-border bg-background">
+      <div className="container-page grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 md:h-20 xl:flex xl:justify-between">
+        <Link to="/" className="flex min-w-0 items-center gap-3 leading-none" onClick={() => setOpen(false)}>
+          <img src={logo.url} width={165} height={109} alt="MP&P — Studio Parotelli" className="h-11 w-[67px] shrink-0 object-contain" />
+          <span className="flex min-w-0 flex-col">
+          <span className="truncate font-serif text-base font-semibold md:text-lg">
             Studio Parotelli
           </span>
           <span className="mt-1 text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground">
             Commercialisti · Milano
           </span>
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-0 xl:flex">
           <div
             className="relative"
             onMouseEnter={() => setServiziOpen(true)}
             onMouseLeave={() => setServiziOpen(false)}
           >
-            <button
+            <Button variant="ghost"
               type="button"
               aria-expanded={serviziOpen}
               onClick={() => setServiziOpen((v) => !v)}
@@ -45,7 +50,7 @@ export function Header() {
             >
               Servizi
               <ChevronDown className="size-4" aria-hidden />
-            </button>
+            </Button>
             {serviziOpen ? (
               <div className="absolute left-0 top-full w-[22rem] border border-border bg-card p-2 shadow-raised">
                 {servizi.map((s) => (
@@ -79,10 +84,10 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden shrink-0 items-center gap-2 xl:flex">
           <a
             href={studio.telefonoHref}
-            className="flex items-center gap-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+            className="hidden items-center gap-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground 2xl:flex"
           >
             <Phone className="size-4" aria-hidden />
             {studio.telefono}
@@ -90,21 +95,24 @@ export function Header() {
           <Button asChild variant="brand">
             <Link to="/contatti/">Preventivo</Link>
           </Button>
+          {pathname === "/" ? <HomeDesignSelector /> : null}
         </div>
 
-        <button
+        <Button variant="ghost" size="icon"
           type="button"
-          className="-mr-2 inline-flex size-10 items-center justify-center rounded-md lg:hidden"
+          className="-mr-2 inline-flex size-10 items-center justify-center rounded-md xl:hidden"
           aria-label={open ? "Chiudi il menu" : "Apri il menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" aria-hidden />}
-        </button>
+        </Button>
       </div>
 
+      {pathname === "/" ? <div className="container-page flex items-center justify-end gap-2 border-t border-border py-2 xl:hidden"><Button asChild variant="brand" size="sm"><Link to="/contatti/">Preventivo</Link></Button><HomeDesignSelector /></div> : null}
+
       {open ? (
-        <div className="border-t border-border bg-background lg:hidden">
+        <div className="max-h-[70dvh] overflow-y-auto border-t border-border bg-background xl:hidden">
           <nav className="container-page flex flex-col py-4">
             <details className="border-b border-border py-1">
               <summary className="cursor-pointer list-none py-3 text-base font-medium">
