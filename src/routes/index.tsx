@@ -22,6 +22,8 @@ import { PhotoPlaceholder } from "@/components/site/PhotoPlaceholder";
 import { PostCardItem } from "@/components/site/PostCardItem";
 import { ContactForm } from "@/components/site/ContactForm";
 import { servizi, studio, team } from "@/lib/site";
+import { HomeOpening } from "@/components/site/HomeOpening";
+import { useHomeDesign } from "@/components/site/HomeDesignProvider";
 
 const TITOLO = "Studio commercialista a Milano | Studio Parotelli";
 const DESCRIZIONE =
@@ -54,6 +56,7 @@ const icone = [
 
 function Home() {
   const { pagina, ultimi } = Route.useLoaderData();
+  const { design } = useHomeDesign();
 
   return (
     <>
@@ -68,62 +71,11 @@ function Home() {
         }}
       />
 
-      {/* Apertura */}
-      <section className="border-b border-border">
-        <div className="container-page grid gap-12 py-16 md:py-24 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center">
-          <div>
-            <p className="eyebrow">Consulenza tributaria, legale e societaria</p>
-            <h1 className="mt-4 font-serif text-4xl leading-[1.08] md:text-6xl">
-              Studio commercialista
-              <span className="block text-muted-foreground">a Milano</span>
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Seguiamo partite IVA, startup e PMI nell'aprire, gestire, vendere o chiudere una
-              società. Un unico studio per fisco, lavoro, diritto e adempimenti.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild variant="brand" size="lg">
-                <Link to="/contatti/">
-                  Richiedi un preventivo
-                  <ArrowRight className="size-4" aria-hidden />
-                </Link>
-              </Button>
-              <Button asChild variant="line" size="lg">
-                <a href={studio.whatsappHref} target="_blank" rel="noreferrer noopener">
-                  <MessageCircle className="size-4" aria-hidden />
-                  Scrivici su WhatsApp
-                </a>
-              </Button>
-            </div>
-            <dl className="mt-10 grid grid-cols-1 gap-6 border-t border-border pt-8 sm:grid-cols-3">
-              <div>
-                <dt className="eyebrow">Dove</dt>
-                <dd className="mt-1 text-sm">{studio.sedeLegale}</dd>
-              </div>
-              <div>
-                <dt className="eyebrow">Telefono</dt>
-                <dd className="mt-1 text-sm">
-                  <a href={studio.telefonoHref} className="hover:underline">
-                    {studio.telefono}
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt className="eyebrow">Email</dt>
-                <dd className="mt-1 text-sm">
-                  <a href={`mailto:${studio.email}`} className="hover:underline">
-                    {studio.email}
-                  </a>
-                </dd>
-              </div>
-            </dl>
-          </div>
-          <PhotoPlaceholder label="foto dello studio" className="aspect-[4/5] w-full" />
-        </div>
-      </section>
+      <div className={`home-content home-content-${design}`} data-home-design={design}>
+      <HomeOpening />
 
       {/* Servizi */}
-      <section className="bg-secondary">
+      <section className="home-services bg-secondary">
         <div className="container-page py-16 md:py-24">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
@@ -139,7 +91,7 @@ function Home() {
 
           <ul className="mt-10 grid gap-px overflow-hidden border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {servizi.map((s, i) => {
-              const Icona = icone[i % icone.length]!;
+              const Icona = icone[i % icone.length] ?? Receipt;
               return (
                 <li key={s.to} className="bg-background">
                   <PageLink
@@ -160,7 +112,7 @@ function Home() {
       </section>
 
       {/* Automazione e AI */}
-      <section className="bg-anthracite text-anthracite-foreground">
+      <section className="home-ai bg-anthracite text-anthracite-foreground">
         <div className="container-page grid gap-10 py-16 md:py-24 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="eyebrow text-anthracite-foreground/60">Novità</p>
@@ -198,7 +150,7 @@ function Home() {
 
       {/* Studio: testo originale del sito */}
       {pagina?.content_html ? (
-        <section className="container-page py-16 md:py-24">
+        <section className="home-about container-page py-16 md:py-24">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
             <div>
               <p className="eyebrow">Lo studio</p>
@@ -213,7 +165,7 @@ function Home() {
       ) : null}
 
       {/* Team */}
-      <section className="bg-secondary">
+      <section className="home-team bg-secondary">
         <div className="container-page py-16 md:py-24">
           <p className="eyebrow">Professionisti</p>
           <h2 className="mt-3 font-serif text-3xl md:text-4xl">Le persone dello studio</h2>
@@ -237,7 +189,7 @@ function Home() {
 
       {/* Ultimi articoli */}
       {ultimi.length > 0 ? (
-        <section className="container-page py-16 md:py-24">
+        <section className="home-news container-page py-16 md:py-24">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="eyebrow">News</p>
@@ -256,7 +208,7 @@ function Home() {
       ) : null}
 
       {/* Contatti */}
-      <section id="contattaci" className="border-t border-border bg-secondary">
+      <section id="contattaci" className="home-contact border-t border-border bg-secondary">
         <div className="container-page grid gap-12 py-16 md:py-24 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
           <div>
             <p className="eyebrow">Contatti</p>
@@ -283,6 +235,7 @@ function Home() {
           </div>
         </div>
       </section>
+      </div>
     </>
   );
 }

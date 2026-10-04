@@ -133,7 +133,7 @@
   h4 {
     font-family: var(--font-serif);
     font-weight: 500;
-    letter-spacing: -0.015em;
+    letter-spacing: 0;
     color: var(--color-foreground);
   }
 
@@ -153,9 +153,79 @@
 @utility eyebrow {
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
   text-transform: uppercase;
   color: var(--color-muted-foreground);
+}
+
+/* Four live home compositions share content, links and design tokens. */
+.home-content { display: flex; flex-direction: column; }
+.home-content > * { min-width: 0; }
+.home-opening { order: 0; border-bottom: 1px solid var(--border); }
+.home-services { order: 1; }
+.home-ai { order: 2; }
+.home-about { order: 3; }
+.home-team { order: 4; }
+.home-news { order: 5; }
+.home-contact { order: 6; }
+.home-opening-inner { display: grid; gap: 2rem; padding-top: 3rem; padding-bottom: 2rem; }
+.home-brand { margin-top: 1.25rem; font-size: 1.125rem; }
+.home-title { margin-top: .75rem; font-size: 2.5rem; line-height: 1.12; }
+.home-title span { display: block; color: var(--muted-foreground); }
+.home-description { margin-top: 1.25rem; max-width: 37rem; font-size: 1rem; line-height: 1.75; }
+.home-actions { margin-top: 1.75rem; }
+.home-opening-photo { min-width: 0; position: relative; }
+.home-opening-photo img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16/9; }
+.home-opening-photo figcaption { position: absolute; bottom: .65rem; right: .65rem; padding: .25rem .5rem; background: var(--background); color: var(--muted-foreground); font-size: .625rem; }
+.home-contact-strip { border-top: 1px solid var(--border); background: var(--secondary); }
+.home-opening-panoramica .home-opening-inner { position: relative; max-width: none; min-height: 31rem; }
+.home-opening-panoramica .home-opening-photo { position: absolute; inset: 0; z-index: 0; }
+.home-opening-panoramica .home-opening-photo img { aspect-ratio: auto; }
+.home-opening-panoramica .home-opening-photo::after { content: ''; position: absolute; inset: 0; background: color-mix(in oklab, var(--background) 88%, transparent); }
+.home-opening-panoramica .home-opening-photo figcaption { z-index: 1; }
+.home-opening-panoramica .home-opening-copy { position: relative; z-index: 1; width: 100%; max-width: 73.5rem; margin: auto; }
+.home-opening-essenziale .home-opening-copy { text-align: center; }
+.home-opening-essenziale .home-description { margin-inline: auto; }
+.home-opening-essenziale .home-actions { justify-content: center; }
+.home-opening-essenziale .home-opening-photo { max-height: 18rem; overflow: hidden; }
+.home-opening-essenziale .home-opening-photo img { aspect-ratio: 3/1; }
+.home-content-essenziale .home-news { order: 2; }
+.home-content-essenziale .home-ai { order: 4; }
+.home-content-essenziale .home-team { order: 5; }
+.home-content-panoramica .home-about { order: 1; }
+.home-content-panoramica .home-services { order: 2; }
+.home-content-panoramica .home-ai { order: 3; }
+.home-content-servizi .home-ai { order: 3; }
+.home-content-servizi .home-news { order: 2; }
+.home-quick-links { margin-top: 2rem; }
+.home-quick-links a { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: 1rem .75rem 1rem 0; font-size: .8125rem; border-bottom: 1px solid var(--border); }
+.home-content-essenziale .home-services ul { border: 0; background: transparent; gap: 1rem; }
+.home-content-essenziale .home-services li { border-bottom: 1px solid var(--border); background: transparent; }
+.home-content-servizi .home-services ul { gap: .75rem; border: 0; background: transparent; }
+.home-content-servizi .home-services li { border: 1px solid var(--border); }
+.home-content-panoramica .home-services li a { padding-block: 2rem; }
+@media (min-width: 768px) {
+  .home-title { font-size: 3.5rem; }
+  .home-description { font-size: 1.125rem; }
+  .home-opening-inner { padding-block: 3.5rem; }
+  .home-opening-panoramica .home-opening-inner { min-height: 34rem; }
+  .home-opening-panoramica .home-opening-photo::after { background: color-mix(in oklab, var(--background) 73%, transparent); }
+  .home-opening-panoramica .home-opening-copy { padding-right: 38%; }
+  .home-opening-essenziale .home-opening-inner { padding-bottom: 0; }
+  .home-opening-essenziale .home-opening-photo { margin-top: 1rem; }
+}
+@media (min-width: 1024px) {
+  .home-opening-editoriale .home-opening-inner { grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr); align-items: center; gap: 3rem; }
+  .home-opening-editoriale .home-opening-photo { height: 25rem; }
+  .home-opening-editoriale .home-title { font-size: 3.25rem; }
+  .home-opening-servizi .home-opening-inner { grid-template-columns: minmax(0,1.35fr) minmax(0,.65fr); align-items: center; }
+  .home-opening-servizi .home-opening-photo { height: 24rem; }
+  .home-opening-servizi .home-title { font-size: 3rem; }
+  .home-content-servizi .home-services ul { grid-template-columns: repeat(5,minmax(0,1fr)); }
+  .home-content-servizi .home-services li a { padding: 1.25rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 
 /* Contenuti HTML importati da WordPress */
