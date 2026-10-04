@@ -18,6 +18,7 @@ import { Footer } from "@/components/site/Footer";
 import { MobileActionBar, WhatsAppFloat } from "@/components/site/MobileActionBar";
 import { CookieBanner } from "@/components/site/CookieBanner";
 import { Button } from "@/components/ui/button";
+import { HomeDesignProvider } from "@/components/site/HomeDesignProvider";
 
 function NotFoundComponent() {
   return (
@@ -91,7 +92,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
   }),
   shellComponent: RootShell,
@@ -121,6 +122,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <HomeDesignProvider>
       {isAdmin ? (
         /* Required: nested routes render here. */
         <Outlet />
@@ -137,6 +139,7 @@ function RootComponent() {
           <CookieBanner />
         </>
       )}
+      </HomeDesignProvider>
     </QueryClientProvider>
   );
 }

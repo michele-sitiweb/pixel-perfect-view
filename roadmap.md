@@ -1,6 +1,8 @@
 # Roadmap — Studio Parotelli
 
 ## Fatto
+- Quattro composizioni della home selezionabili accanto a Preventivo; colori e caratteri attuali preservati
+- Logo MP&P allegato nell'intestazione e icona del sito
 - Backend, importazione 34 pagine + 81 articoli, immagini WebP su CDN
 - Design system, intestazione con tendina servizi, footer, barra WhatsApp/chiamata su mobile, banner cookie
 - Home, Automazione e AI, News (paginazione + ricerca), articoli /AAAA/MM/GG/slug/, pagine servizio importate, Contatti, Grazie, 404
@@ -8,7 +10,6 @@
 
 ## Da fare
 - Riorganizzazione grafica completa per telefono e PC, mantenendo URL e testi originali
-- Logo dello studio allegato nell'intestazione
 - Selettore italiano, inglese, francese e tedesco con traduzione di tutte le pagine
 - Calendario per richieste di appuntamento con salvataggio e gestione delle richieste
 - Campo attività/professione nel modulo di contatto
