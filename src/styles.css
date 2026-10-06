@@ -161,6 +161,13 @@
 /* Four live home compositions share content, links and design tokens. */
 .home-content { display: flex; flex-direction: column; }
 .home-content > * { min-width: 0; }
+.prose-studio { min-width: 0; overflow-wrap: anywhere; }
+.prose-studio [class*="n2-"] { max-width: 100% !important; width: auto !important; height: auto !important; min-height: 0 !important; position: static !important; transform: none !important; }
+.prose-studio .n2-ss-slide-backgrounds,
+.prose-studio .n2-ss-slide-background,
+.prose-studio .n2-ss-background-animation { display: none; }
+.prose-studio [class*="n2-"] img { width: 100% !important; height: auto !important; object-fit: contain; }
+.prose-studio table { display: block; overflow-x: auto; }
 .home-opening { order: 0; border-bottom: 1px solid var(--border); }
 .home-services { order: 1; }
 .home-ai { order: 2; }
