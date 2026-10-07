@@ -22,6 +22,8 @@ import { PhotoPlaceholder } from "@/components/site/PhotoPlaceholder";
 import { PostCardItem } from "@/components/site/PostCardItem";
 import { ContactForm } from "@/components/site/ContactForm";
 import { servizi, studio, team } from "@/lib/site";
+import { Reviews } from "@/components/site/Reviews";
+import { AppointmentBooking } from "@/components/site/AppointmentBooking";
 import { HomeOpening } from "@/components/site/HomeOpening";
 import { useHomeDesign } from "@/components/site/HomeDesignProvider";
 
@@ -187,6 +189,8 @@ function Home() {
         </div>
       </section>
 
+      <Reviews />
+
       {/* Ultimi articoli */}
       {ultimi.length > 0 ? (
         <section className="home-news container-page py-16 md:py-24">
@@ -206,6 +210,18 @@ function Home() {
           </div>
         </section>
       ) : null}
+
+      {/* Appuntamento */}
+      <section id="appuntamento" className="home-booking container-page py-16 md:py-24">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+          <div>
+            <p className="eyebrow">Appuntamenti</p>
+            <h2 className="mt-3 font-serif text-3xl md:text-4xl">Prenota un incontro con lo studio</h2>
+            <p className="mt-4 text-muted-foreground">Scegli giorno e orario: in studio a Milano, in videochiamata o al telefono. Ti confermiamo l'appuntamento appena possibile.</p>
+          </div>
+          <div className="border border-border bg-background p-6 md:p-8"><AppointmentBooking origine="/" /></div>
+        </div>
+      </section>
 
       {/* Contatti */}
       <section id="contattaci" className="home-contact border-t border-border bg-secondary">

@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { servizi, studio } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo-mpp.png.asset.json";
+import { LanguageSelector } from "@/components/site/LanguageSelector";
 import { HomeDesignSelector } from "@/components/site/HomeDesignProvider";
 
 const mainNav = [
@@ -92,12 +93,14 @@ export function Header() {
             <Phone className="size-4" aria-hidden />
             {studio.telefono}
           </a>
+          <LanguageSelector />
           <Button asChild variant="brand">
             <Link to="/contatti/">Preventivo</Link>
           </Button>
           {pathname === "/" ? <HomeDesignSelector /> : null}
         </div>
 
+        <div className="flex items-center gap-1 xl:hidden"><LanguageSelector />
         <Button variant="ghost" size="icon"
           type="button"
           className="-mr-2 inline-flex size-10 items-center justify-center rounded-md xl:hidden"
@@ -106,7 +109,7 @@ export function Header() {
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X className="size-6" aria-hidden /> : <Menu className="size-6" aria-hidden />}
-        </Button>
+        </Button></div>
       </div>
 
       {pathname === "/" ? <div className="container-page flex items-center justify-end gap-2 border-t border-border py-2 xl:hidden"><Button asChild variant="brand" size="sm"><Link to="/contatti/">Preventivo</Link></Button><HomeDesignSelector /></div> : null}

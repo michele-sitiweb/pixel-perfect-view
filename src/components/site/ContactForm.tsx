@@ -30,6 +30,7 @@ export function ContactForm({
           email: String(fd.get("email") ?? ""),
           telefono: String(fd.get("telefono") ?? ""),
           azienda: String(fd.get("azienda") ?? ""),
+          attivita: String(fd.get("attivita") ?? ""),
           servizio: String(fd.get("servizio") ?? "Altro"),
           messaggio: String(fd.get("messaggio") ?? ""),
           consensoPrivacy: fd.get("privacy") === "on",
@@ -65,6 +66,10 @@ export function ContactForm({
       <label className="flex flex-col gap-1.5 text-sm">
         <span className="font-medium">Azienda</span>
         <input name="azienda" autoComplete="organization" className={inputClass} />
+      </label>
+      <label className="flex flex-col gap-1.5 text-sm sm:col-span-2">
+        <span className="font-medium">Di cosa ti occupi? *</span>
+        <input name="attivita" required placeholder="Es. libero professionista, e-commerce, ristorazione…" className={inputClass} />
       </label>
       <label className="flex flex-col gap-1.5 text-sm sm:col-span-2">
         <span className="font-medium">Servizio di interesse</span>
