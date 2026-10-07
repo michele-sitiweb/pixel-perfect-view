@@ -15,7 +15,7 @@ function letturaLingua(): string {
 
 function caricaTraduttore() {
   if (document.getElementById("gt-script")) return;
-  (window as unknown as Record<string, unknown>).googleTranslateElementInit = () => {
+  (window as unknown as Record<string, unknown>)["googleTranslateElementInit"] = () => {
     const g = (window as unknown as { google?: any }).google;
     if (g?.translate) new g.translate.TranslateElement({ pageLanguage: "it", autoDisplay: false }, "gt-element");
   };
