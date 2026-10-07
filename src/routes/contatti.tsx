@@ -3,6 +3,7 @@ import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { getPageByPath } from "@/lib/content.functions";
 import { buildHead, accountingServiceLd, breadcrumbLd } from "@/lib/seo";
 import { ContactForm } from "@/components/site/ContactForm";
+import { AppointmentBooking } from "@/components/site/AppointmentBooking";
 import { Prose } from "@/components/site/Prose";
 import { studio } from "@/lib/site";
 
