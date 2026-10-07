@@ -3,6 +3,7 @@ import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { getPageByPath } from "@/lib/content.functions";
 import { buildHead, accountingServiceLd, breadcrumbLd } from "@/lib/seo";
 import { ContactForm } from "@/components/site/ContactForm";
+import { AppointmentBooking } from "@/components/site/AppointmentBooking";
 import { Prose } from "@/components/site/Prose";
 import { studio } from "@/lib/site";
 
@@ -50,6 +51,13 @@ function Contatti() {
           <li className="flex gap-3"><Mail className="mt-0.5 size-4 text-brand" aria-hidden /><span><a href={`mailto:${studio.email}`}>{studio.email}</a><br />PEC {studio.pec}</span></li>
         </ul>
       </div>
+      <section id="appuntamento" className="border-t border-border bg-secondary">
+        <div className="container-page py-14 md:py-20">
+          <p className="eyebrow">Appuntamenti</p>
+          <h2 className="mt-3 font-serif text-3xl md:text-4xl">Prenota un incontro</h2>
+          <div className="mt-8 border border-border bg-background p-6 md:p-8"><AppointmentBooking origine="/contatti/" /></div>
+        </div>
+      </section>
       {pagina?.content_html ? (
         <div className="container-page max-w-3xl pb-10">
           <Prose html={pagina.content_html} />

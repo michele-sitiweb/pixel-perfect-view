@@ -5,6 +5,7 @@ export type ContactInput = {
   email: string;
   telefono?: string;
   azienda?: string;
+  attivita?: string;
   servizio: string;
   messaggio: string;
   consensoPrivacy: boolean;
@@ -25,7 +26,7 @@ function validate(input: ContactInput): ContactInput {
     telefono: (input.telefono ?? "").trim().slice(0, 40),
     azienda: (input.azienda ?? "").trim().slice(0, 150),
     servizio: (input.servizio ?? "Altro").trim().slice(0, 120),
-    messaggio: messaggio.slice(0, 4000),
+    messaggio: ((input.attivita ?? "").trim() ? `Attività: ${(input.attivita ?? "").trim().slice(0, 200)}\n\n` : "") + messaggio.slice(0, 4000),
     consensoPrivacy: true,
     origine: (input.origine ?? "/contatti/").slice(0, 200),
   };

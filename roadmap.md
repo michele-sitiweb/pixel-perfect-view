@@ -10,10 +10,10 @@
 
 ## Da fare
 - Riorganizzazione grafica completa per telefono e PC, mantenendo URL e testi originali
-- Selettore italiano, inglese, francese e tedesco con traduzione di tutte le pagine
-- Calendario per richieste di appuntamento con salvataggio e gestione delle richieste
-- Campo attività/professione nel modulo di contatto
-- Sezione recensioni nello stile allegato, con citazioni autentiche e fonte Google verificata
+- [fatto] Selettore lingue IT/EN/FR/DE (traduzione automatica di tutto il sito)
+- [fatto] Calendario appuntamenti (richieste salvate nel database)
+- [fatto] Campo attività nel modulo
+- [fatto] Recensioni Google autentiche in home
 - Email di notifica a info@studioparotelli.com per ogni richiesta
 - Area riservata /admin (accesso + gestione articoli)
 - sitemap.xml e robots.txt (dopo la pubblicazione)
