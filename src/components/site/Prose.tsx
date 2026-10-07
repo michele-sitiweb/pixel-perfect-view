@@ -2,6 +2,12 @@ import { cn } from "@/lib/utils";
 
 /** Pulisce solo il "contorno" tecnico di WordPress (stili, script, commenti del builder); il testo resta intatto. */
 function pulisci(html: string): string {
+  // Lo slider di WordPress ripete le stesse frasi più volte: lo si salta, il testo vero inizia dopo.
+  const fineSlider = html.lastIndexOf("n2-");
+  if (fineSlider > -1) {
+    const inizio = html.slice(fineSlider).search(/<(h[1-6]|p)[\s>]/i);
+    if (inizio > -1) html = html.slice(fineSlider + inizio);
+  }
   return html
     .replace(/<style[\s\S]*?<\/style>/gi, "")
     .replace(/<script[\s\S]*?<\/script>/gi, "")
