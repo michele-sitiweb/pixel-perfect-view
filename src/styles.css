@@ -362,3 +362,44 @@
     border-radius: var(--radius);
   }
 }
+
+/* 05 Classico scuro · 06 Luminoso · 07 Impatto */
+:root {
+  --navy: oklch(0.3 0.04 260);
+  --navy-foreground: oklch(0.97 0.004 95);
+  --teal: oklch(0.6 0.11 175);
+  --sky: oklch(0.93 0.04 235);
+  --sky-strong: oklch(0.52 0.13 245);
+  --amber: oklch(0.72 0.12 70);
+}
+.hero-classico { background: var(--navy); color: var(--navy-foreground); }
+.hero-classico h1, .hero-classico p { color: inherit; }
+.hero-classico-topbar { border-bottom: 1px solid color-mix(in oklab, var(--navy-foreground) 18%, transparent); }
+.hero-classico-body { position: relative; overflow: hidden; }
+.hero-classico-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .22; filter: grayscale(1); }
+.hero-classico-motto { color: var(--teal) !important; }
+.hero-classico-btn, .home-content-classico .home-contact button[type=submit] { background: var(--teal); color: var(--navy-foreground); border-radius: 0; text-transform: uppercase; }
+.home-content-classico .home-ai { background: var(--navy); }
+.home-content-classico .eyebrow { color: var(--teal); }
+.home-content-classico .home-services li svg { color: var(--teal); }
+.hero-luminoso, .home-content-luminoso .home-services, .home-content-luminoso .home-reviews { background: var(--sky); }
+.hero-luminoso-title { color: var(--sky-strong); font-family: var(--font-sans); }
+.hero-luminoso-arrow { color: var(--amber); }
+.hero-luminoso-btn, .home-content-luminoso .home-contact button[type=submit] { background: var(--amber); color: var(--ink); border-radius: 0; }
+.hero-luminoso-badge { background: color-mix(in oklab, var(--background) 70%, transparent); color: var(--sky-strong); }
+.home-content-luminoso h2 { font-family: var(--font-sans); font-weight: 300; color: var(--sky-strong); }
+.home-content-luminoso .home-services ul { border: 0; background: transparent; gap: 1rem; }
+.home-content-luminoso .home-services li { border-radius: .75rem; overflow: hidden; }
+.home-content-luminoso .home-services li svg { color: var(--amber); }
+.hero-impatto { position: relative; overflow: hidden; background: var(--ink); color: var(--anthracite-foreground); }
+.hero-impatto h1, .hero-impatto p { color: inherit; }
+.hero-impatto-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .45; }
+.hero-impatto-vertical { writing-mode: vertical-rl; transform: rotate(180deg); font-size: 2rem; line-height: 1.1; border-left: 3px solid var(--brand); padding-left: 1rem; }
+.hero-impatto-btn { background: transparent; border: 2px solid var(--brand); color: var(--brand); }
+.hero-impatto-btn:hover { background: var(--brand); color: var(--brand-foreground); }
+.home-content-impatto h2 { font-family: var(--font-sans); font-weight: 800; }
+.home-content-impatto .home-services { position: relative; z-index: 1; }
+.home-content-impatto .home-services > div { margin-top: -4rem; background: var(--background); box-shadow: var(--shadow-raised); }
+.home-content-impatto .home-services ul { border: 0; gap: 1rem; background: transparent; }
+.home-content-impatto .home-services li { border: 1px solid var(--border); }
+@media (min-width: 768px) { .home-content-impatto .home-services > div { padding-inline: 2.5rem; } }
