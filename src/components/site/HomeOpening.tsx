@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, ArrowDownRight, Briefcase, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PageLink } from "@/components/site/PageLink";
 import { useHomeDesign } from "@/components/site/HomeDesignProvider";
@@ -8,6 +8,9 @@ import office from "@/assets/office-editorial.jpg";
 
 export function HomeOpening() {
   const { design } = useHomeDesign();
+  if (design === "classico") return <OpeningClassico />;
+  if (design === "luminoso") return <OpeningLuminoso />;
+  if (design === "impatto") return <OpeningImpatto />;
   return (
     <section className={`home-opening home-opening-${design}`}>
       <div className="home-opening-inner container-page">
@@ -42,6 +45,80 @@ export function HomeOpening() {
           <div><dt className="eyebrow">Telefono</dt><dd className="mt-1 text-sm"><a href={studio.telefonoHref}>{studio.telefono}</a></dd></div>
           <div className="min-w-0"><dt className="eyebrow">Email</dt><dd className="mt-1 break-words text-sm"><a href={`mailto:${studio.email}`}>{studio.email}</a></dd></div>
         </dl>
+      </div>
+    </section>
+  );
+}
+const descrizione =
+  "Seguiamo partite IVA, startup e PMI nell'aprire, gestire, vendere o chiudere una società. Un unico studio per fisco, lavoro, diritto e adempimenti.";
+
+function OpeningClassico() {
+  return (
+    <section className="home-opening hero-classico">
+      <div className="hero-classico-topbar">
+        <div className="container-page flex flex-wrap justify-between gap-2 py-2 text-xs">
+          <span>{studio.sedeLegale}</span>
+          <a href={studio.telefonoHref} className="inline-flex items-center gap-1"><Phone className="size-3" aria-hidden /> {studio.telefono}</a>
+        </div>
+      </div>
+      <div className="hero-classico-body">
+        <img src={office} width={1536} height={1024} alt="" aria-hidden className="hero-classico-img" fetchPriority="high" />
+        <div className="container-page relative z-10 flex min-h-[34rem] flex-col items-center justify-center py-20 text-center">
+          <p className="font-serif text-6xl italic leading-none md:text-7xl">MP&amp;P</p>
+          <p className="mt-4 font-serif text-3xl uppercase tracking-[0.12em] md:text-5xl">Studio Parotelli</p>
+          <h1 className="mt-4 text-base font-semibold md:text-lg">Studio commercialista a Milano</h1>
+          <p className="mt-2 text-sm italic opacity-80">Consulenza tributaria, legale e societaria</p>
+          <p className="hero-classico-motto mt-8 font-serif text-xl italic md:text-2xl">«Precisione, affidabilità e costante aggiornamento»</p>
+          <Button asChild size="lg" className="hero-classico-btn mt-10"><Link to="/contatti/">Richiedi una consulenza</Link></Button>
+        </div>
+      </div>
+      <p className="sr-only">{descrizione}</p>
+    </section>
+  );
+}
+
+function OpeningLuminoso() {
+  return (
+    <section className="home-opening hero-luminoso">
+      <div className="container-page grid items-center gap-10 py-16 md:py-24 lg:grid-cols-2">
+        <div>
+          <span className="inline-block border border-current px-3 py-1 text-xs uppercase opacity-70">Studio Parotelli</span>
+          <h1 className="hero-luminoso-title mt-6 text-5xl font-light leading-[1.05] md:text-6xl">
+            Studio commercialista Milano per
+            <span className="mt-2 flex items-center gap-3 font-semibold"><ArrowDownRight className="hero-luminoso-arrow size-10" aria-hidden strokeWidth={1.5} /> la tua impresa</span>
+          </h1>
+          <p className="mt-8 max-w-lg text-[0.95rem] leading-relaxed text-foreground/80">{descrizione}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button asChild size="lg" className="hero-luminoso-btn"><Link to="/contatti/">Scopri di più <ArrowRight className="size-4" aria-hidden /></Link></Button>
+            <Button asChild variant="line" size="lg"><a href={studio.whatsappHref} target="_blank" rel="noreferrer noopener"><MessageCircle className="size-4" aria-hidden /> WhatsApp</a></Button>
+          </div>
+        </div>
+        <div className="flex justify-center">
+          <div className="hero-luminoso-badge flex size-64 items-center justify-center rounded-full md:size-80">
+            <Briefcase className="size-28 md:size-36" aria-hidden strokeWidth={1.1} />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OpeningImpatto() {
+  return (
+    <section className="home-opening hero-impatto">
+      <img src={office} width={1536} height={1024} alt="" aria-hidden className="hero-impatto-img" fetchPriority="high" />
+      <div className="container-page relative z-10 grid min-h-[36rem] items-center gap-10 py-20 md:grid-cols-[auto_minmax(0,1fr)]">
+        <p className="hero-impatto-vertical hidden font-bold md:block" aria-hidden>Fisco<br />Contabilità<br />Consulenza</p>
+        <div>
+          <h1 className="text-5xl font-extrabold leading-none md:text-7xl" style={{ fontFamily: "var(--font-sans)" }}>Studio Parotelli</h1>
+          <p className="mt-3 text-lg font-semibold">Studio commercialista a Milano</p>
+          <p className="mt-8 max-w-md text-lg font-semibold">Un unico studio per fisco, lavoro, diritto e adempimenti.</p>
+          <p className="mt-3 max-w-md text-base italic opacity-85">{descrizione}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button asChild size="lg" className="hero-impatto-btn rounded-full"><Link to="/contatti/">Contattaci gratuitamente</Link></Button>
+            <Button asChild size="lg" className="hero-impatto-btn rounded-full"><a href={studio.telefonoHref}><Phone className="size-4" aria-hidden /> Chiamaci</a></Button>
+          </div>
+        </div>
       </div>
     </section>
   );
