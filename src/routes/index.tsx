@@ -16,7 +16,7 @@ import {
 import { getPageByPath, listPosts } from "@/lib/content.functions";
 import { buildHead, accountingServiceLd, breadcrumbLd } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
-import { Prose } from "@/components/site/Prose";
+import { HomeAbout } from "@/components/site/HomeAbout";
 import { PageLink } from "@/components/site/PageLink";
 import { PhotoPlaceholder } from "@/components/site/PhotoPlaceholder";
 import { PostCardItem } from "@/components/site/PostCardItem";
@@ -151,20 +151,7 @@ function Home() {
       </section>
 
       {/* Studio: testo originale del sito */}
-      {pagina?.content_html ? (
-        <section className="home-about container-page py-16 md:py-24">
-          <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
-            <div>
-              <p className="eyebrow">Lo studio</p>
-              <h2 className="mt-3 font-serif text-3xl md:text-4xl">Chi siamo</h2>
-              <Button asChild variant="line" className="mt-6">
-                <PageLink to="/lo-studio-2/">Conosci lo studio</PageLink>
-              </Button>
-            </div>
-            <Prose html={pagina.content_html} />
-          </div>
-        </section>
-      ) : null}
+      <HomeAbout html={pagina?.content_html} />
 
       {/* Team */}
       <section className="home-team bg-secondary">

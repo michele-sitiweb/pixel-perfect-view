@@ -9,6 +9,7 @@ function pulisci(html: string): string {
     if (inizio > -1) html = html.slice(fineSlider + inizio);
   }
   return html
+    .replace(/<(\/?)h1\b/gi, "<$1h2")
     .replace(/<style[\s\S]*?<\/style>/gi, "")
     .replace(/<script[\s\S]*?<\/script>/gi, "")
     .replace(/<noscript[\s\S]*?<\/noscript>/gi, "")
