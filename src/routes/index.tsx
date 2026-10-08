@@ -17,7 +17,6 @@ import { getPageByPath, listPosts } from "@/lib/content.functions";
 import { buildHead, accountingServiceLd, breadcrumbLd } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { HomeAbout } from "@/components/site/HomeAbout";
-import { Prose } from "@/components/site/Prose";
 import { PageLink } from "@/components/site/PageLink";
 import { PhotoPlaceholder } from "@/components/site/PhotoPlaceholder";
 import { PostCardItem } from "@/components/site/PostCardItem";

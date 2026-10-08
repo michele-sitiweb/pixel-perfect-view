@@ -32,7 +32,7 @@ const valori = [
   { icona: BookOpenCheck, label: "Costante aggiornamento sulle normative" },
 ];
 
-export function HomeAbout({ html }: { html?: string | null }) {
+export function HomeAbout({ html }: { html: string | null | undefined }) {
   return (
     <section className="home-about border-t border-border">
       <div className="container-page py-16 md:py-24">
