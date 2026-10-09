@@ -437,8 +437,8 @@
 .hero-moderno-tile-brand { background: var(--brand); color: var(--brand-foreground); }
 @media (min-width: 1024px) {
   .hero-moderno-grid { grid-template-columns: 1.5fr 1fr; grid-template-rows: auto auto; }
-  .hero-moderno-main { grid-row: span 2; padding: 3.5rem; }
-  .hero-moderno-grid { grid-template-areas: "main photo" "main photo" "main tiles"; }
+  .hero-moderno-main { grid-row: span 3; padding: 3.5rem; }
+
 }
 .home-content-moderno .home-services ul { border: 0; background: transparent; gap: .75rem; }
 .home-content-moderno .home-services li { border-radius: 1rem; overflow: hidden; }
