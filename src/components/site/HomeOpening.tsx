@@ -11,6 +11,9 @@ export function HomeOpening() {
   if (design === "classico") return <OpeningClassico />;
   if (design === "luminoso") return <OpeningLuminoso />;
   if (design === "impatto") return <OpeningImpatto />;
+  if (design === "atelier") return <OpeningAtelier />;
+  if (design === "moderno") return <OpeningModerno />;
+  if (design === "prestigio") return <OpeningPrestigio />;
   return (
     <section className={`home-opening home-opening-${design}`}>
       <div className="home-opening-inner container-page">
@@ -119,6 +122,82 @@ function OpeningImpatto() {
           </div>
         </div>
       </div>
+    </section>
+  );
+}
+
+function OpeningAtelier() {
+  return (
+    <section className="home-opening hero-atelier">
+      <div className="container-page grid gap-10 py-14 md:py-20 lg:grid-cols-12 lg:items-end">
+        <div className="lg:col-span-7">
+          <p className="hero-atelier-kicker">Studio Parotelli — Milano</p>
+          <h1 className="hero-atelier-title mt-6">Studio commercialista <em>a Milano</em></h1>
+          <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted-foreground">{descrizione}</p>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <Button asChild variant="brand" size="lg"><Link to="/contatti/">Richiedi un preventivo <ArrowRight className="size-4" aria-hidden /></Link></Button>
+            <Button asChild variant="line" size="lg"><a href={studio.whatsappHref} target="_blank" rel="noreferrer noopener"><MessageCircle className="size-4" aria-hidden /> WhatsApp</a></Button>
+          </div>
+        </div>
+        <figure className="hero-atelier-photo lg:col-span-5">
+          <img src={office} width={1536} height={1024} alt="Illustrazione di un ambiente professionale contemporaneo" fetchPriority="high" />
+          <figcaption>Immagine illustrativa</figcaption>
+        </figure>
+      </div>
+      <div className="border-y border-border">
+        <ol className="container-page grid sm:grid-cols-3">
+          {[["01", "Contabilità e fiscale", "/attivita-ordinarie/"], ["02", "Consulenza del lavoro", "/consulenza-del-lavoro/"], ["03", "Consulenza legale", "/consulenza-legale/"]].map(([n, l, to]) => (
+            <li key={to} className="hero-atelier-index"><PageLink to={to}><span>{n}</span>{l}<ArrowRight className="size-4" aria-hidden /></PageLink></li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+function OpeningModerno() {
+  return (
+    <section className="home-opening hero-moderno">
+      <div className="container-page py-10 md:py-14">
+        <div className="hero-moderno-grid">
+          <div className="hero-moderno-main">
+            <p className="hero-moderno-tag">● Consulenza tributaria, legale e societaria</p>
+            <h1 className="mt-6">Studio commercialista<br />a Milano.</h1>
+            <p className="mt-6 max-w-lg text-base leading-relaxed opacity-80">{descrizione}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild variant="brand" size="lg"><Link to="/contatti/">Richiedi un preventivo <ArrowRight className="size-4" aria-hidden /></Link></Button>
+              <Button asChild variant="onDark" size="lg"><a href={studio.telefonoHref}><Phone className="size-4" aria-hidden /> {studio.telefono}</a></Button>
+            </div>
+          </div>
+          <figure className="hero-moderno-photo">
+            <img src={office} width={1536} height={1024} alt="Illustrazione di un ambiente professionale contemporaneo" fetchPriority="high" />
+            <figcaption>Immagine illustrativa</figcaption>
+          </figure>
+          <a href={studio.whatsappHref} target="_blank" rel="noreferrer noopener" className="hero-moderno-tile hero-moderno-tile-brand"><MessageCircle className="size-6" aria-hidden /><span>Scrivici su WhatsApp</span></a>
+          <a href={`mailto:${studio.email}`} className="hero-moderno-tile"><span className="text-xs uppercase opacity-60">Email</span><span className="break-all">{studio.email}</span></a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OpeningPrestigio() {
+  return (
+    <section className="home-opening hero-prestigio">
+      <div className="container-page flex flex-col items-center py-16 text-center md:py-24">
+        <span className="hero-prestigio-rule" aria-hidden />
+        <p className="mt-6 text-xs uppercase tracking-[0.3em] text-muted-foreground">Studio Parotelli · dal cuore di Milano</p>
+        <h1 className="hero-prestigio-title mt-6">Studio commercialista<br /><em>a Milano</em></h1>
+        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground">{descrizione}</p>
+        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <Button asChild variant="brand" size="lg"><Link to="/contatti/">Richiedi un preventivo</Link></Button>
+          <Button asChild variant="line" size="lg"><a href="#appuntamento">Prenota un appuntamento</a></Button>
+        </div>
+      </div>
+      <figure className="hero-prestigio-photo container-page">
+        <img src={office} width={1536} height={1024} alt="Illustrazione di un ambiente professionale contemporaneo" fetchPriority="high" />
+        <figcaption>Immagine illustrativa</figcaption>
+      </figure>
     </section>
   );
 }

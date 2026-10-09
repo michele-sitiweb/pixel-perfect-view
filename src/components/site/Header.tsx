@@ -25,19 +25,19 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background">
       <div className="container-page grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 md:h-20 xl:flex xl:justify-between">
-        <Link to="/" className="flex min-w-0 items-center gap-3 leading-none" onClick={() => setOpen(false)}>
+        <Link to="/" className="flex min-w-0 items-center gap-3 leading-none xl:shrink-0" onClick={() => setOpen(false)}>
           <img src={logo.url} width={165} height={109} alt="MP&P — Studio Parotelli" className="h-11 w-[67px] shrink-0 object-contain" />
-          <span className="flex min-w-0 flex-col">
-          <span className="truncate font-serif text-base font-semibold md:text-lg">
+          <span className="flex min-w-0 flex-col xl:min-w-max">
+          <span className="truncate whitespace-nowrap font-serif text-base font-semibold md:text-lg xl:overflow-visible">
             Studio Parotelli
           </span>
-          <span className="mt-1 text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground">
+          <span className="mt-1 whitespace-nowrap text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground">
             Commercialisti · Milano
           </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-0 xl:flex">
+        <nav className="hidden min-w-0 shrink-0 items-center gap-0.5 xl:flex">
           <div
             className="relative"
             onMouseEnter={() => setServiziOpen(true)}
@@ -47,7 +47,7 @@ export function Header() {
               type="button"
               aria-expanded={serviziOpen}
               onClick={() => setServiziOpen((v) => !v)}
-              className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+              className="flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
             >
               Servizi
               <ChevronDown className="size-4" aria-hidden />
@@ -68,7 +68,7 @@ export function Header() {
             ) : null}
           </div>
 
-          <PageLink to="/lo-studio-2/" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground">
+          <PageLink to="/lo-studio-2/" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground">
             Chi siamo
           </PageLink>
           {mainNav.map((item) => (
@@ -76,7 +76,7 @@ export function Header() {
               key={item.to}
               to={item.to}
               className={cn(
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-foreground",
+                "whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-foreground",
                 isActive(item.to) ? "text-foreground" : "text-foreground/80",
               )}
             >
@@ -88,7 +88,7 @@ export function Header() {
         <div className="hidden shrink-0 items-center gap-2 xl:flex">
           <a
             href={studio.telefonoHref}
-            className="hidden items-center gap-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground 2xl:flex"
+            className="hidden items-center gap-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground min-[1800px]:flex"
           >
             <Phone className="size-4" aria-hidden />
             {studio.telefono}
