@@ -403,3 +403,7 @@
 .home-content-impatto .home-services ul { border: 0; gap: 1rem; background: transparent; }
 .home-content-impatto .home-services li { border: 1px solid var(--border); }
 @media (min-width: 768px) { .home-content-impatto .home-services > div { padding-inline: 2.5rem; } }
+.home-reviews { order: 5; }
+.home-news { order: 6; }
+.home-booking { order: 7; }
+.home-contact { order: 8; }
