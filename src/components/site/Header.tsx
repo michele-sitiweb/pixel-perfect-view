@@ -25,13 +25,13 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background">
       <div className="container-page grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 md:h-20 xl:flex xl:justify-between">
-        <Link to="/" className="flex min-w-0 items-center gap-3 leading-none" onClick={() => setOpen(false)}>
+        <Link to="/" className="flex min-w-0 items-center gap-3 leading-none xl:shrink-0" onClick={() => setOpen(false)}>
           <img src={logo.url} width={165} height={109} alt="MP&P — Studio Parotelli" className="h-11 w-[67px] shrink-0 object-contain" />
           <span className="flex min-w-0 flex-col">
-          <span className="truncate font-serif text-base font-semibold md:text-lg">
+          <span className="truncate whitespace-nowrap font-serif text-base font-semibold md:text-lg xl:overflow-visible">
             Studio Parotelli
           </span>
-          <span className="mt-1 text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground">
+          <span className="mt-1 whitespace-nowrap text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground">
             Commercialisti · Milano
           </span>
           </span>

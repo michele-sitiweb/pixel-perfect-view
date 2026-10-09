@@ -43,7 +43,7 @@ export function HomeDesignSelector() {
         const match = homeDesigns.find((item) => item.value === event.target.value);
         if (match) setDesign(match.value);
       }}
-      className="h-10 w-[158px] min-w-0 rounded-md border border-input bg-background px-2 text-xs text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="h-10 w-[132px] min-w-0 rounded-md border border-input bg-background px-2 text-xs text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       {homeDesigns.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
     </select>
