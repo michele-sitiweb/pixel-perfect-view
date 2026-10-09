@@ -88,7 +88,7 @@ export function Header() {
         <div className="hidden shrink-0 items-center gap-2 xl:flex">
           <a
             href={studio.telefonoHref}
-            className="hidden items-center gap-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground 2xl:flex"
+            className="hidden items-center gap-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground min-[1800px]:flex"
           >
             <Phone className="size-4" aria-hidden />
             {studio.telefono}
