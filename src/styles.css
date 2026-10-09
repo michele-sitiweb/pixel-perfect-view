@@ -407,3 +407,49 @@
 .home-news { order: 6; }
 .home-booking { order: 7; }
 .home-contact { order: 8; }
+
+/* 08 Atelier · 09 Moderno · 10 Prestigio */
+.hero-atelier, .home-content-atelier { --font-serif: "Instrument Serif", Georgia, serif; --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif; font-family: var(--font-sans); }
+.home-content-atelier h2, .home-content-atelier h3, .hero-atelier h1 { font-family: var(--font-serif); font-weight: 400; }
+.hero-atelier-kicker { font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; color: var(--muted-foreground); border-left: 2px solid var(--brand); padding-left: .75rem; }
+.hero-atelier-title { font-size: clamp(2.75rem, 7vw, 5.5rem); line-height: .98; }
+.hero-atelier-title em { display: block; color: var(--muted-foreground); }
+.hero-atelier-photo { position: relative; }
+.hero-atelier-photo img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+.hero-atelier-photo figcaption, .hero-moderno-photo figcaption, .hero-prestigio-photo figcaption { position: absolute; bottom: .6rem; right: .6rem; padding: .2rem .5rem; background: var(--background); color: var(--muted-foreground); font-size: .625rem; }
+.hero-atelier-index a { display: flex; align-items: center; gap: 1rem; padding: 1.25rem 0; font-size: .95rem; font-weight: 500; }
+.hero-atelier-index a span { font-family: var(--font-serif); font-size: 1.5rem; color: var(--muted-foreground); }
+.hero-atelier-index a svg { margin-left: auto; margin-right: 1rem; }
+.hero-atelier-index + .hero-atelier-index a { border-top: 1px solid var(--border); }
+@media (min-width: 640px) { .hero-atelier-index + .hero-atelier-index a { border-top: 0; border-left: 1px solid var(--border); padding-left: 1.25rem; } }
+.home-content-atelier .home-services ul { border: 0; background: transparent; gap: 0; }
+.home-content-atelier .home-services li { border-top: 1px solid var(--border); background: transparent; }
+
+.hero-moderno, .home-content-moderno { --font-serif: "Space Grotesk", ui-sans-serif, sans-serif; --font-sans: "Space Grotesk", ui-sans-serif, sans-serif; font-family: var(--font-sans); }
+.home-content-moderno h2, .home-content-moderno h3 { font-family: var(--font-sans); font-weight: 700; letter-spacing: -0.02em; }
+.hero-moderno-grid { display: grid; gap: .75rem; }
+.hero-moderno-main { background: var(--anthracite); color: var(--anthracite-foreground); padding: 2rem; border-radius: 1rem; }
+.hero-moderno-main h1 { color: inherit; font-family: var(--font-sans); font-weight: 700; letter-spacing: -0.03em; font-size: clamp(2.4rem, 6vw, 4.5rem); line-height: 1; }
+.hero-moderno-tag { font-size: .8rem; color: var(--brand); }
+.hero-moderno-photo { position: relative; border-radius: 1rem; overflow: hidden; min-height: 16rem; }
+.hero-moderno-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero-moderno-tile { display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; min-height: 8rem; padding: 1.5rem; border-radius: 1rem; background: var(--secondary); font-weight: 500; }
+.hero-moderno-tile-brand { background: var(--brand); color: var(--brand-foreground); }
+@media (min-width: 1024px) {
+  .hero-moderno-grid { grid-template-columns: 1.5fr 1fr; grid-template-rows: auto auto; }
+  .hero-moderno-main { grid-row: span 2; padding: 3.5rem; }
+  .hero-moderno-grid { grid-template-areas: "main photo" "main photo" "main tiles"; }
+}
+.home-content-moderno .home-services ul { border: 0; background: transparent; gap: .75rem; }
+.home-content-moderno .home-services li { border-radius: 1rem; overflow: hidden; }
+.home-content-moderno .home-ai { margin: 0 1.25rem; border-radius: 1.25rem; }
+
+.hero-prestigio, .home-content-prestigio { --font-serif: "Cormorant Garamond", Georgia, serif; --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif; font-family: var(--font-sans); background: var(--sand); }
+.home-content-prestigio h2, .home-content-prestigio h3 { font-family: var(--font-serif); font-weight: 500; }
+.hero-prestigio-rule { width: 3rem; height: 2px; background: var(--brand); }
+.hero-prestigio-title { font-family: var(--font-serif); font-weight: 500; font-size: clamp(2.75rem, 7vw, 5.75rem); line-height: 1; }
+.hero-prestigio-title em { color: var(--muted-foreground); }
+.hero-prestigio-photo { position: relative; padding-bottom: 4rem; }
+.hero-prestigio-photo img { width: 100%; aspect-ratio: 21/8; object-fit: cover; }
+.home-content-prestigio .home-services { background: var(--background); }
+.home-content-prestigio .home-news { order: 2; }

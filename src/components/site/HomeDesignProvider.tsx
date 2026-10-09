@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-export type HomeDesign = "editoriale" | "panoramica" | "essenziale" | "servizi" | "classico" | "luminoso" | "impatto";
+export type HomeDesign = "editoriale" | "panoramica" | "essenziale" | "servizi" | "classico" | "luminoso" | "impatto" | "atelier" | "moderno" | "prestigio";
 export const homeDesigns: { value: HomeDesign; label: string }[] = [
   { value: "editoriale", label: "01 · Editoriale" },
   { value: "panoramica", label: "02 · Panoramica" },
@@ -9,6 +9,9 @@ export const homeDesigns: { value: HomeDesign; label: string }[] = [
   { value: "classico", label: "05 · Classico scuro" },
   { value: "luminoso", label: "06 · Luminoso" },
   { value: "impatto", label: "07 · Impatto" },
+  { value: "atelier", label: "08 · Atelier" },
+  { value: "moderno", label: "09 · Moderno" },
+  { value: "prestigio", label: "10 · Prestigio" },
 ];
 const Context = createContext<{ design: HomeDesign; setDesign: (value: HomeDesign) => void }>({ design: "editoriale", setDesign: () => {} });
 

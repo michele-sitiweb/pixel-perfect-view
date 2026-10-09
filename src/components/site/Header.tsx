@@ -37,7 +37,7 @@ export function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-0 xl:flex">
+        <nav className="hidden min-w-0 shrink-0 items-center gap-0.5 xl:flex">
           <div
             className="relative"
             onMouseEnter={() => setServiziOpen(true)}
@@ -47,7 +47,7 @@ export function Header() {
               type="button"
               aria-expanded={serviziOpen}
               onClick={() => setServiziOpen((v) => !v)}
-              className="flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+              className="flex items-center gap-1 whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
             >
               Servizi
               <ChevronDown className="size-4" aria-hidden />
@@ -68,7 +68,7 @@ export function Header() {
             ) : null}
           </div>
 
-          <PageLink to="/lo-studio-2/" className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground">
+          <PageLink to="/lo-studio-2/" className="whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium text-foreground/80 hover:text-foreground">
             Chi siamo
           </PageLink>
           {mainNav.map((item) => (
@@ -76,7 +76,7 @@ export function Header() {
               key={item.to}
               to={item.to}
               className={cn(
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-foreground",
+                "whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-foreground",
                 isActive(item.to) ? "text-foreground" : "text-foreground/80",
               )}
             >
