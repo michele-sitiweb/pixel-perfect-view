@@ -112,8 +112,7 @@ function OpeningImpatto() {
         <div>
           <h1 className="text-5xl font-extrabold leading-none md:text-7xl" style={{ fontFamily: "var(--font-sans)" }}>Studio Parotelli</h1>
           <p className="mt-3 text-lg font-semibold">Studio commercialista a Milano</p>
-          <p className="mt-8 max-w-md text-lg font-semibold">Un unico studio per fisco, lavoro, diritto e adempimenti.</p>
-          <p className="mt-3 max-w-md text-base italic opacity-85">{descrizione}</p>
+          <p className="mt-8 max-w-md text-lg italic opacity-90">{descrizione}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button asChild size="lg" className="hero-impatto-btn rounded-full"><Link to="/contatti/">Contattaci gratuitamente</Link></Button>
             <Button asChild size="lg" className="hero-impatto-btn rounded-full"><a href={studio.telefonoHref}><Phone className="size-4" aria-hidden /> Chiamaci</a></Button>
