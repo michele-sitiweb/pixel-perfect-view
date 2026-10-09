@@ -27,7 +27,7 @@ export function Header() {
       <div className="container-page grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 md:h-20 xl:flex xl:justify-between">
         <Link to="/" className="flex min-w-0 items-center gap-3 leading-none xl:shrink-0" onClick={() => setOpen(false)}>
           <img src={logo.url} width={165} height={109} alt="MP&P — Studio Parotelli" className="h-11 w-[67px] shrink-0 object-contain" />
-          <span className="flex min-w-0 flex-col">
+          <span className="flex min-w-0 flex-col xl:min-w-max">
           <span className="truncate whitespace-nowrap font-serif text-base font-semibold md:text-lg xl:overflow-visible">
             Studio Parotelli
           </span>
