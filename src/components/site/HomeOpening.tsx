@@ -146,7 +146,7 @@ function OpeningAtelier() {
       </div>
       <div className="border-y border-border">
         <ol className="container-page grid sm:grid-cols-3">
-          {[["01", "Contabilità e fiscale", "/attivita-ordinarie/"], ["02", "Consulenza del lavoro", "/consulenza-del-lavoro/"], ["03", "Consulenza legale", "/consulenza-legale/"]].map(([n, l, to]) => (
+          {([["01", "Contabilità e fiscale", "/attivita-ordinarie/"], ["02", "Consulenza del lavoro", "/consulenza-del-lavoro/"], ["03", "Consulenza legale", "/consulenza-legale/"]] as const).map(([n, l, to]) => (
             <li key={to} className="hero-atelier-index"><PageLink to={to}><span>{n}</span>{l}<ArrowRight className="size-4" aria-hidden /></PageLink></li>
           ))}
         </ol>
